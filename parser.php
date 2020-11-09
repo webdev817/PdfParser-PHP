@@ -104,16 +104,16 @@ if($_POST['flag'] == true){
                 $_COL_PESO[$i][$k] = "1/1kg";
             }
             else if($tabelData[$i][$k][16] != "Note:" && $lenTemp > 17){
-                $_DESTINATARIO[$i][$k] = $tabelData[$i][$k][3]."\n".$tabelData[$i][$k][4];
-                $_INDIRIZZO[$i][$k] = $tabelData[$i][$k][5]."\n"."Note:";
+                $_DESTINATARIO[$i][$k] =str_ireplace("'", "`", $tabelData[$i][$k][3]."\n ".$tabelData[$i][$k][4]);
+                $_INDIRIZZO[$i][$k] = str_ireplace("'", "`", $tabelData[$i][$k][5]."\n"."Note: ");
                 $_CAP[$i][$k] = $tabelData[$i][$k][8];
                 $_COD[$i][$k] = $tabelData[$i][$k][6];
                 $_OP[$i][$k] = $tabelData[$i][$k][12]." ".$tabelData[$i][$k][13]." ".$tabelData[$i][$k][14];
                 $_COL_PESO[$i][$k] = $tabelData[$i][$k][7];
             }
             else if($tabelData[$i][$k][16] === "Note:" && $lenTemp > 17){
-                $_DESTINATARIO[$i][$k] = $tabelData[$i][$k][3];
-                $_INDIRIZZO[$i][$k] = $tabelData[$i][$k][4]. "\n"."Note:".$tabelData[$i][$k][$lenTemp-1];
+                $_DESTINATARIO[$i][$k] = str_ireplace("'", "`", $tabelData[$i][$k][3]);
+                $_INDIRIZZO[$i][$k] = str_ireplace("'", "`", $tabelData[$i][$k][4]. "\n"."Note: ".$tabelData[$i][$k][$lenTemp-1]);
                 $_CAP[$i][$k] = $tabelData[$i][$k][7];
                 $_COD[$i][$k] = $tabelData[$i][$k][5];
                 $_OP[$i][$k] = $tabelData[$i][$k][11]." ".$tabelData[$i][$k][12]." ".$tabelData[$i][$k][13];
@@ -121,8 +121,8 @@ if($_POST['flag'] == true){
     
             }
             else{
-                $_DESTINATARIO[$i][$k] = $tabelData[$i][$k][3];
-                $_INDIRIZZO[$i][$k] = $tabelData[$i][$k][4]. "\n Note:";
+                $_DESTINATARIO[$i][$k] = str_ireplace("'", "`", $tabelData[$i][$k][3]);
+                $_INDIRIZZO[$i][$k] = str_ireplace("'", "`", $tabelData[$i][$k][4]. "\n Note: ");
                 $_CAP[$i][$k] = $tabelData[$i][$k][7];
                 $_COD[$i][$k] = $tabelData[$i][$k][5];
                 $_OP[$i][$k] = $tabelData[$i][$k][11]." ".$tabelData[$i][$k][12]." ".$tabelData[$i][$k][13];
